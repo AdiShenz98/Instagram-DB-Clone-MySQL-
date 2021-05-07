@@ -1,38 +1,8 @@
 use ig_clone;
+# names of users who have posted more than the average post
 
--- WITH total_photos AS(
--- SELECT
--- 	user_id,
---     COUNT(*) as total_photos
--- FROM
--- 	photos
--- GROUP BY
--- 	user_id)
--- avg_photos AS(
--- 	SELECT
--- 		AVG(total_photos) as avg_photos
--- 	FROM
--- 		total_photos
---         )
--- SELECT
--- 	id,
---     username
--- FROM
--- 	users
--- WHERE
--- 	id IN
---     (SELECT
--- 		user_id,
---         COUNT(*) AS total
--- 	FROM
--- 		photos
--- 	GROUP BY
--- 		user_id
--- 	HAVING
--- 		total > (SELECT
--- 					avg_photos
--- 				 FROM
--- 					avg_photos);
+
+# Using Subqueries
 
 SELECT
 	ROUND(AVG(total_count),2) as total_avg
@@ -69,6 +39,7 @@ HAVING
 							) as T1 );
 
 
+# Using with
 
 WITH total_photos AS
 		(  SELECT
